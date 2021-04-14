@@ -18,6 +18,9 @@
         <version.guava>30.1-jre</version.guava>
         <version.allure>2.13.8</version.allure>
         <version.allure.maven>2.8</version.allure.maven>
+        <version.surefire.plugin>3.0.0-M5</version.surefire.plugin>
+        <version.webdrivermanager>4.3.1</version.webdrivermanager>
+        <version.aspectj>1.9.6</version.aspectj>
         <version.download-maven-plugin>1.6.1</version.download-maven-plugin>
         <version.chromedriver>89.0.4389.23</version.chromedriver>
         <md5.chromedriver>0bf4bc39f34cee67f5f95afd8a24c191</md5.chromedriver>
@@ -29,6 +32,8 @@
         <version.edgedriver>89.0.774.63</version.edgedriver>
         <md5.edgedriver>6a82870f093a9a7d7972a4cfa331f72c</md5.edgedriver>
         <driver.folder>drivers/</driver.folder>
+        <testdata.property.path>testdata/default.properties</testdata.property.path>
+        <allure.results.path>target/allure-results</allure.results.path>
     </properties>
 
     <dependencies>
@@ -68,6 +73,12 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${version.guava}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${version.webdrivermanager}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -134,6 +145,33 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${version.surefire.plugin}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${basedir}/TestNG.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${version.aspectj}/aspectjweaver-${version.aspectj}.jar"
+                    </argLine>
+                    <systemPropertyVariables>
+                        <driver.path>${driver.folder}</driver.path>
+                        <testdata.property.path>${testdata.property.path}</testdata.property.path>
+                        <allure.results.directory>${basedir}/${allure.results.path}</allure.results.directory>
+                    </systemPropertyVariables>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${version.aspectj}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
         </plugins>
     </build>
 

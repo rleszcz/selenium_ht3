@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="eBay.com" parallel="tests" thread-count="1">
+  <test name="only one browser">
+    <parameter name="browserName" value="Chrome" />
+    <classes>
+      <class name="OnlineShopTest" />
+    </classes>
+  </test>
+</suite>
