@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SearchResultsPage extends SimplePage {
 
-    @FindBy(xpath = "(//ul[@class=\"srp-results srp-list clearfix\"]/li)[1]//h3[@class=\"s-item__title\"]")
+    @FindBy(xpath = "(//ul[@class=\"srp-results srp-list clearfix\"]/li)[1]//h3")
     private static WebElement THE_FIRST_ITEM_LISTED;
 
     public SearchResultsPage(WebDriver driver) {

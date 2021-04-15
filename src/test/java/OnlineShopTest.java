@@ -19,7 +19,6 @@ public class OnlineShopTest extends SimpleTest{
     static final String MY_EBAY_SECTION_ITEM_SAVED_SELLERS_XPATH = "//div[@class=\"gh-menu\"]//a[contains(text(), \"Saved Sellers\")]";
     static final String MY_EBAY_SECTION_ITEM_MESSAGES_XPATH = "//div[@class=\"gh-menu\"]//a[contains(text(), \"Messages\")]";
 
-    /*
     @Test
     public void searchForLegoAndAddToCart() {
         homePage.open()
@@ -27,24 +26,23 @@ public class OnlineShopTest extends SimpleTest{
         searchResultsPage.clickOnTheFirstItemListed();
         itemPage.addToCart()
                 .goToCart();
+        waitPresent(CART_CONTENT_XPATH, 5);
         Assert.assertTrue(driver.findElement(By.xpath(CART_CONTENT_XPATH)).isDisplayed());
-    }*/
+    }
 
-    /* working one
     @Test
-    public void switchSiteToPoland() throws InterruptedException {
+    public void switchSiteToPoland() {
         homePage.open()
                 .navigateToPolishVersion();
         waitPresent(POLISH_LOGO_BUTTON_XPATH, 5);
         Assert.assertTrue(driver.findElement(By.xpath(POLISH_LOGO_BUTTON_XPATH)).isDisplayed());
     }
 
-     */
-
     @Test
     public void checkIfThereAreNoMissingItemsOfMyEbaySection() {
         homePage.open()
                 .openMyEbaySection();
+        waitClickable(MY_EBAY_SECTION_ITEM_SUMMARY_XPATH, 5);
         Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_SUMMARY_XPATH)).isDisplayed());
         Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_RECENTLY_VIEWED_XPATH)).isDisplayed());
         Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_BIDS_OFFERS_XPATH)).isDisplayed());

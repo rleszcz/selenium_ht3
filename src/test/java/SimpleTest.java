@@ -37,4 +37,9 @@ public abstract class SimpleTest {
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
     }
 
+    WebElement waitClickable(String xPath, long seconds) {
+        return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
+    }
+
 }

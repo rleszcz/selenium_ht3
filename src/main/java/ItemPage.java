@@ -23,8 +23,7 @@ public class ItemPage extends SimplePage {
     }
 
     @Step("Go to cart")
-    public ItemPage goToCart() throws InterruptedException {
-        //Thread.sleep(10000);
+    public ItemPage goToCart() {
         clickOnElement(waitToBeClickable(GO_TO_CART_BUTTON, driver));
         return this;
     }

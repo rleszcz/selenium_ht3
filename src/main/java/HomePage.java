@@ -53,7 +53,7 @@ public class HomePage extends SimplePage {
     }
 
     @Step("Open My eBay section")
-    public HomePage openMyEbaySection(){
+    public HomePage openMyEbaySection() {
         mouseOverElement(MY_EBAY_SECTION_BUTTON);
         return this;
     }
