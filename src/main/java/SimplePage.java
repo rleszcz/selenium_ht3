@@ -1,3 +1,4 @@
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,11 +38,17 @@ public class SimplePage extends Page {
     protected WebElement waitToBeClickable(WebElement element, WebDriver driver) {
         WebElement visibleElement = null;
         try {
-            visibleElement = new WebDriverWait(driver, Duration.ofSeconds(5))
+            visibleElement = new WebDriverWait(driver, Duration.ofSeconds(10))
                     .until(ExpectedConditions.elementToBeClickable(element));
         } catch (Exception e) {
             System.out.println("Element was not loaded!");
         }
         return visibleElement;
     }
+
+    public static void scrollTo(WebDriver driver, WebElement element) {
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView();", element);
+    }
+
 }

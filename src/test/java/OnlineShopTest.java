@@ -6,7 +6,7 @@ public class OnlineShopTest extends SimpleTest{
 
     static final String SEARCH_PHRASE = "Lego 42100";
     static final String CART_CONTENT_XPATH = "//div[@class=\"cart-bucket-lineitem\"]";
-    static final String POLISH_URL = "https://www.ebay.pl/";
+    static final String POLISH_LOGO_BUTTON_XPATH = "//header[@id=\"gh\"]//a[@href=\"https://www.ebay.pl\"]";
 
     static final String MY_EBAY_SECTION_ITEM_SUMMARY_XPATH = "//div[@class=\"gh-menu\"]//a[contains(text(), \"Summary\")]";
     static final String MY_EBAY_SECTION_ITEM_RECENTLY_VIEWED_XPATH = "//div[@class=\"gh-menu\"]//a[contains(text(), \"Recently Viewed\")]";
@@ -19,6 +19,7 @@ public class OnlineShopTest extends SimpleTest{
     static final String MY_EBAY_SECTION_ITEM_SAVED_SELLERS_XPATH = "//div[@class=\"gh-menu\"]//a[contains(text(), \"Saved Sellers\")]";
     static final String MY_EBAY_SECTION_ITEM_MESSAGES_XPATH = "//div[@class=\"gh-menu\"]//a[contains(text(), \"Messages\")]";
 
+    /*
     @Test
     public void searchForLegoAndAddToCart() {
         homePage.open()
@@ -27,15 +28,18 @@ public class OnlineShopTest extends SimpleTest{
         itemPage.addToCart()
                 .goToCart();
         Assert.assertTrue(driver.findElement(By.xpath(CART_CONTENT_XPATH)).isDisplayed());
-    }
+    }*/
 
+    /* working one
     @Test
-    public void switchSiteToPoland() {
+    public void switchSiteToPoland() throws InterruptedException {
         homePage.open()
                 .navigateToPolishVersion();
-        String currentURL = driver.getCurrentUrl();
-        Assert.assertEquals(currentURL, POLISH_URL);
+        waitPresent(POLISH_LOGO_BUTTON_XPATH, 5);
+        Assert.assertTrue(driver.findElement(By.xpath(POLISH_LOGO_BUTTON_XPATH)).isDisplayed());
     }
+
+     */
 
     @Test
     public void checkIfThereAreNoMissingItemsOfMyEbaySection() {

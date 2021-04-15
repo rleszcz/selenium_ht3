@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.testng>7.3.0</version.testng>
         <version.selenium>4.0.0-beta-2</version.selenium>
@@ -28,7 +28,9 @@
         <!-- 32 bit
         <md5.geckodriver>dc1f5f2d3bc32565e59f1ce3a32b8d3d</md5.geckodriver>
         -->
+        <!--
         <md5.geckodriver>8e19f65e730bd5960e87c7e42c88c5a7</md5.geckodriver>
+        -->
         <version.edgedriver>89.0.774.63</version.edgedriver>
         <md5.edgedriver>6a82870f093a9a7d7972a4cfa331f72c</md5.edgedriver>
         <driver.folder>drivers/</driver.folder>
@@ -43,6 +45,13 @@
             <version>${version.testng}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${version.aspectj}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>

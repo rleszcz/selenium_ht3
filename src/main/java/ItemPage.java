@@ -16,14 +16,15 @@ public class ItemPage extends SimplePage {
         PageFactory.initElements(this.driver, this);
     }
 
-    @Step("Click on the first item that was listed")
+    @Step("Add to cart")
     public ItemPage addToCart() {
         clickOnElement(waitToBeClickable(ADD_TO_CART_BUTTON, driver));
         return this;
     }
 
-    @Step("Click on the first item that was listed")
-    public ItemPage goToCart() {
+    @Step("Go to cart")
+    public ItemPage goToCart() throws InterruptedException {
+        //Thread.sleep(10000);
         clickOnElement(waitToBeClickable(GO_TO_CART_BUTTON, driver));
         return this;
     }

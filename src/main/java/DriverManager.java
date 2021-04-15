@@ -33,7 +33,7 @@ public class DriverManager {
     private WebDriver initFirefox(){
         //firefox requires not only browser to be installed but also profile to be created.
         System.setProperty("webdriver.gecko.driver", System.getProperty("driver.path") + "/geckodriver.exe");
-        FirefoxProfile profile = new ProfilesIni().getProfile("TestAutomation");
+        FirefoxProfile profile = new ProfilesIni().getProfile("default");
         FirefoxOptions ffOptions = new FirefoxOptions();
         ffOptions.setProfile(profile);
         return new FirefoxDriver(ffOptions);
