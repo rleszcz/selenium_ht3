@@ -27,7 +27,7 @@ public class OnlineShopTest extends SimpleTest{
         itemPage.addToCart()
                 .goToCart();
         waitPresent(CART_CONTENT_XPATH, 5);
-        Assert.assertTrue(driver.findElement(By.xpath(CART_CONTENT_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(CART_CONTENT_XPATH)).isDisplayed());
     }
 
     @Test
@@ -35,7 +35,7 @@ public class OnlineShopTest extends SimpleTest{
         homePage.open()
                 .navigateToPolishVersion();
         waitPresent(POLISH_LOGO_BUTTON_XPATH, 5);
-        Assert.assertTrue(driver.findElement(By.xpath(POLISH_LOGO_BUTTON_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(POLISH_LOGO_BUTTON_XPATH)).isDisplayed());
     }
 
     @Test
@@ -43,15 +43,15 @@ public class OnlineShopTest extends SimpleTest{
         homePage.open()
                 .openMyEbaySection();
         waitClickable(MY_EBAY_SECTION_ITEM_SUMMARY_XPATH, 5);
-        Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_SUMMARY_XPATH)).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_RECENTLY_VIEWED_XPATH)).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_BIDS_OFFERS_XPATH)).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_WATCHLIST_XPATH)).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_PURCHASE_HISTORY_XPATH)).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_BUY_AGAIN_XPATH)).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_SELLING_XPATH)).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_SAVED_SEARCHES_XPATH)).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_SAVED_SELLERS_XPATH)).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.xpath(MY_EBAY_SECTION_ITEM_MESSAGES_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(MY_EBAY_SECTION_ITEM_SUMMARY_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(MY_EBAY_SECTION_ITEM_RECENTLY_VIEWED_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(MY_EBAY_SECTION_ITEM_BIDS_OFFERS_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(MY_EBAY_SECTION_ITEM_WATCHLIST_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(MY_EBAY_SECTION_ITEM_PURCHASE_HISTORY_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(MY_EBAY_SECTION_ITEM_BUY_AGAIN_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(MY_EBAY_SECTION_ITEM_SELLING_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(MY_EBAY_SECTION_ITEM_SAVED_SEARCHES_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(MY_EBAY_SECTION_ITEM_SAVED_SELLERS_XPATH)).isDisplayed());
+        Assert.assertTrue(driver.get().findElement(By.xpath(MY_EBAY_SECTION_ITEM_MESSAGES_XPATH)).isDisplayed());
     }
 }

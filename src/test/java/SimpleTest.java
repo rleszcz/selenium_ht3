@@ -1,44 +1,60 @@
+import drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
+import org.testng.Reporter;
 import org.testng.annotations.*;
+import pages.HomePage;
+import pages.ItemPage;
+import pages.SearchResultsPage;
 
 import java.time.Duration;
 
 public abstract class SimpleTest {
-    protected WebDriver driver;
+    protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    protected DriverManager driverManager = null;
+
     protected HomePage homePage = null;
     protected SearchResultsPage searchResultsPage = null;
     protected ItemPage itemPage = null;
-    protected DriverManager driverManager = null;
 
     @Parameters("browserName")
-    @BeforeMethod
-    public void preparation(String browserName, ITestContext context){
+    @BeforeClass
+    public void preparation(@Optional("Chrome") String browserName){
         driverManager = new DriverManager();
-        driver = driverManager.getDriver(browserName);
-        context.setAttribute("WebDriver", driver);
+        driver.set(driverManager.getDriver(browserName, "Grid"));
+        ITestContext context = Reporter.getCurrentTestResult().getTestContext();
+        context.setAttribute("WebDriver", driver.get());
 
-        homePage = new HomePage(driver);
-        searchResultsPage = new SearchResultsPage(driver);
-        itemPage = new ItemPage(driver);
+        homePage = new HomePage(driver.get());
+        searchResultsPage = new SearchResultsPage(driver.get());
+        itemPage = new ItemPage(driver.get());
     }
 
     @AfterMethod
-    public void cleanUp() {
-        driver.quit();
+    public void browserReset(){
+        driver.get()
+                .manage()
+                .deleteAllCookies();
+    }
+
+    @AfterClass
+    public void cleanUp(){
+        driver.get()
+                .quit();
+        driver.remove();
     }
 
     WebElement waitPresent(String xPath, long seconds) {
-        return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+        return new WebDriverWait(driver.get(), Duration.ofSeconds(seconds))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
     }
 
     WebElement waitClickable(String xPath, long seconds) {
-        return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+        return new WebDriverWait(driver.get(), Duration.ofSeconds(seconds))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
     }
 

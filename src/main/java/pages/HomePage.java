@@ -1,10 +1,10 @@
-import org.openqa.selenium.JavascriptExecutor;
+package pages;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends SimplePage {
 
@@ -26,8 +26,7 @@ public class HomePage extends SimplePage {
     private static WebElement GDPR_ACCEPT_BUTTON;
 
     public HomePage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(this.driver, this);
+        super(driver);
     }
 
     @Step("Open home page")
