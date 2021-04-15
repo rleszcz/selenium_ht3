@@ -21,7 +21,6 @@ public class CapabilityManager {
         profile.setPreference("network.proxy.type", 0);
         firefoxOptions.setProfile(profile);
         firefoxOptions.setCapability("acceptInsecureCerts", true);
-        firefoxOptions.addArguments("start-maximized");
         return firefoxOptions;
     }
 
