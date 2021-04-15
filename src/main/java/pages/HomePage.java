@@ -22,9 +22,6 @@ public class HomePage extends SimplePage {
     @FindBy(xpath = "//a[@title=\"My eBay\"]")
     private static WebElement MY_EBAY_SECTION_BUTTON;
 
-    @FindBy(xpath = "//button[@id=\"gdpr-banner-accept\"]")
-    private static WebElement GDPR_ACCEPT_BUTTON;
-
     public HomePage(WebDriver driver){
         super(driver);
     }
@@ -45,8 +42,7 @@ public class HomePage extends SimplePage {
     @Step("Navigate to Polish version")
     public HomePage navigateToPolishVersion() {
         scrollTo(driver, SITE_SELECTION_TAB);
-        clickOnElement(waitToBeClickable(GDPR_ACCEPT_BUTTON, driver));
-        mouseOverElement(SITE_SELECTION_TAB);
+        clickOnElement(waitToBeClickable(SITE_SELECTION_TAB, driver));
         clickOnElement(waitToBeClickable(POLAND_BUTTON, driver));
         return this;
     }

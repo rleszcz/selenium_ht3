@@ -4,19 +4,19 @@
     <test name="with Edge browser">
         <parameter name="browserName" value="Edge"/>
         <classes>
-            <class name="OnlineShopTest"/>
+            <class name="tests.OnlineShopTest"/>
         </classes>
     </test>
     <test name="with Chrome browser">
         <parameter name="browserName" value="Chrome"/>
         <classes>
-            <class name="OnlineShopTest"/>
+            <class name="tests.OnlineShopTest"/>
         </classes>
     </test>
     <test name="with Firefox browser">
         <parameter name="browserName" value="Firefox"/>
         <classes>
-            <class name="OnlineShopTest"/>
+            <class name="tests.OnlineShopTest"/>
         </classes>
     </test>
 </suite>
